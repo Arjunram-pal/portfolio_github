@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog - Arjunram Pal</title>
+  <link rel="shortcut icon" href="static/images/logo.ico" type="image/x-icon">
+  <link rel="stylesheet" href="static/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="static/site-data.js" defer></script>
+  <script src="static/script.js" defer></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</head>
+<body data-page="blog">
+  <main>
+    <aside class="sidebar" data-sidebar>
+      <div class="sidebar-info">
+        <figure class="avatar-box">
+          <img src="static/images/my-avatar.png" alt="Arjunram Pal" width="80">
+        </figure>
+        <div class="info-content">
+          <h1 class="name" title="Arjunram Pal">Arjunram Pal</h1>
+          <p class="title">Data Engineer</p>
+        </div>
+        <button class="info_more-btn" data-sidebar-btn>
+          <span>Show Contacts</span>
+          <ion-icon name="chevron-down"></ion-icon>
+        </button>
+      </div>
+
+      <div class="sidebar-info_more">
+        <div class="separator"></div>
+        <ul class="contacts-list">
+          <li class="contact-item"><div class="icon-box"><ion-icon name="mail-outline"></ion-icon></div><div class="contact-info"><p class="contact-title">Email</p><a href="mailto:arjunp087461@gmail.com" class="contact-link">arjunp087461@gmail.com</a></div></li>
+          <li class="contact-item"><div class="icon-box"><ion-icon name="phone-portrait-outline"></ion-icon></div><div class="contact-info"><p class="contact-title">Phone</p><a href="tel:+917021344403" class="contact-link">+91 7021344403</a></div></li>
+          <li class="contact-item"><div class="icon-box"><ion-icon name="calendar-outline"></ion-icon></div><div class="contact-info"><p class="contact-title">Birthday</p><time datetime="1999-12-09">Dec 09, 1999</time></div></li>
+          <li class="contact-item"><div class="icon-box"><ion-icon name="location-outline"></ion-icon></div><div class="contact-info"><p class="contact-title">Location</p><address>Bhadohi, Uttar Pradesh, India</address></div></li>
+        </ul>
+        <div class="separator"></div>
+        <ul class="social-list">
+          <li class="social-item"><a href="https://www.linkedin.com/in/arjunram-pal-2858211b4/" class="social-link" target="_blank" rel="noreferrer"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+          <li class="social-item"><a href="https://github.com/Arjunram-pal" class="social-link" target="_blank" rel="noreferrer"><ion-icon name="logo-github"></ion-icon></a></li>
+          <li class="social-item"><a href="https://www.instagram.com/arjunram_paul/" class="social-link" target="_blank" rel="noreferrer"><ion-icon name="logo-instagram"></ion-icon></a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <div class="main-content">
+      <nav class="navbar">
+        <ul class="navbar-list">
+          <li class="navbar-item"><a href="index.html" class="navbar-link">About</a></li>
+          <li class="navbar-item"><a href="resume.html" class="navbar-link">Resume</a></li>
+          <li class="navbar-item"><a href="blog.html" class="navbar-link active">Blog</a></li>
+          <li class="navbar-item"><a href="daily-routine.html" class="navbar-link">Daily Routine</a></li>
+          <li class="navbar-item"><a href="contact.html" class="navbar-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <article class="blog active">
+        <header>
+          <h2 class="h2 article-title">Blog</h2>
+        </header>
+
+        <section class="content-card page-note-card">
+          <p class="page-note">
+            This GitHub version is fully static. To add or edit blog posts later, update the arrays in <code>static/site-data.js</code>.
+          </p>
+        </section>
+
+        <section class="blog-posts">
+          <h3 class="h3 section-space">Featured Posts</h3>
+          <ul class="blog-posts-list" id="blogs-container"></ul>
+        </section>
+
+        <div class="blog-modal" id="blogModal" aria-hidden="true">
+          <div class="blog-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="blogModalTitle">
+            <button class="blog-modal-close" id="blogModalCloseBtn" type="button" aria-label="Close blog dialog">Close</button>
+            <h3 class="h3 blog-modal-title" id="blogModalTitle"></h3>
+            <p class="blog-modal-meta" id="blogModalMeta"></p>
+            <div class="blog-modal-content" id="blogModalContent"></div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </main>
+</body>
+</html>
