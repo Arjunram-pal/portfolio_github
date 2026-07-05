@@ -2,3 +2,4 @@ __pycache__/
 *.pyc
 .env
 routine.db
+static/supabase-config.local.js

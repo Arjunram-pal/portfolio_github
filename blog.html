@@ -11,6 +11,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   <script src="static/site-data.js" defer></script>
+  <script src="static/supabase-config.js" defer></script>
+  <script src="static/supabase-client.js" defer></script>
   <script src="static/script.js" defer></script>
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
@@ -57,6 +59,7 @@
           <li class="navbar-item"><a href="blog.html" class="navbar-link active">Blog</a></li>
           <li class="navbar-item"><a href="daily-routine.html" class="navbar-link">Daily Routine</a></li>
           <li class="navbar-item"><a href="contact.html" class="navbar-link">Contact</a></li>
+          <li class="navbar-item"><a href="admin.html" class="navbar-link">Admin</a></li>
         </ul>
       </nav>
 
@@ -67,8 +70,9 @@
 
         <section class="content-card page-note-card">
           <p class="page-note">
-            This GitHub version is fully static. To add or edit blog posts later, update the arrays in <code>static/site-data.js</code>.
+            This page can load blog posts from Supabase. If Supabase is not configured yet, it will safely fall back to the sample posts in <code>static/site-data.js</code>.
           </p>
+          <p class="form-status" id="blogDataStatus" aria-live="polite"></p>
         </section>
 
         <section class="blog-posts">

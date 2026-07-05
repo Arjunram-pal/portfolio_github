@@ -2313,3 +2313,38 @@ textarea.form-input::-webkit-resizer { display: none; }
     color: var(--light-gray);
     text-align: center;
   }
+
+  .admin-header-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .admin-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .admin-form-card {
+    padding: 20px;
+    border: 1px solid var(--jet);
+    border-radius: 16px;
+    background: var(--eerie-black-1);
+  }
+
+  .admin-form-title {
+    margin-bottom: 16px;
+  }
+
+  .admin-routine-box {
+    min-height: 220px;
+  }
+
+  @media (min-width: 1024px) {
+    .admin-grid {
+      grid-template-columns: 1.15fr 0.85fr;
+    }
+  }

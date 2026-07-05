@@ -6,6 +6,7 @@ const elementToggleFunc = function (elem) {
 
 const sidebar = document.querySelector('[data-sidebar]');
 const sidebarBtn = document.querySelector('[data-sidebar-btn]');
+const supabaseClient = window.PortfolioSupabase || null;
 
 if (sidebarBtn && sidebar) {
   sidebarBtn.addEventListener('click', function () {
@@ -51,6 +52,11 @@ function escapeHtml(text) {
   return String(text).replace(/[&<>"']/g, function (match) {
     return map[match];
   });
+}
+
+function setText(target, value) {
+  if (!target) return;
+  target.textContent = value;
 }
 
 const form = document.querySelector('[data-form]');
@@ -99,6 +105,7 @@ const blogModalTitle = document.getElementById('blogModalTitle');
 const blogModalMeta = document.getElementById('blogModalMeta');
 const blogModalContent = document.getElementById('blogModalContent');
 const blogModalCloseBtn = document.getElementById('blogModalCloseBtn');
+const blogDataStatus = document.getElementById('blogDataStatus');
 const blogDataById = new Map();
 
 function openBlogModal(blogId) {
@@ -157,8 +164,31 @@ function renderBlogs() {
   });
 }
 
+async function loadBlogs() {
+  if (!blogsContainer) return;
+
+  const fallbackBlogs = Array.isArray(window.PORTFOLIO_BLOGS) ? window.PORTFOLIO_BLOGS : [];
+
+  if (!supabaseClient || !supabaseClient.isConfigured()) {
+    renderBlogs();
+    setText(blogDataStatus, 'Using local blog data. Add your Supabase project details in static/supabase-config.js to enable live posts.');
+    return;
+  }
+
+  try {
+    setText(blogDataStatus, 'Loading blog posts from Supabase...');
+    window.PORTFOLIO_BLOGS = await supabaseClient.fetchBlogPosts();
+    renderBlogs();
+    setText(blogDataStatus, 'Live blog posts loaded from Supabase.');
+  } catch (error) {
+    window.PORTFOLIO_BLOGS = fallbackBlogs;
+    renderBlogs();
+    setText(blogDataStatus, 'Supabase blog loading failed, so the page fell back to local data. ' + error.message);
+  }
+}
+
 if (blogsContainer) {
-  renderBlogs();
+  loadBlogs();
 
   blogsContainer.addEventListener('click', function (event) {
     const openTrigger = event.target.closest('[data-blog-open-id]');
@@ -186,6 +216,7 @@ document.addEventListener('keydown', function (event) {
 });
 
 const postsContainer = document.getElementById('postsContainer');
+const routineDataStatus = document.getElementById('routineDataStatus');
 
 function renderRoutinePosts() {
   if (!postsContainer) return;
@@ -226,6 +257,29 @@ function renderRoutinePosts() {
   });
 }
 
+async function loadRoutinePosts() {
+  if (!postsContainer) return;
+
+  const fallbackPosts = Array.isArray(window.PORTFOLIO_ROUTINE_POSTS) ? window.PORTFOLIO_ROUTINE_POSTS : [];
+
+  if (!supabaseClient || !supabaseClient.isConfigured()) {
+    renderRoutinePosts();
+    setText(routineDataStatus, 'Using local routine data. Add your Supabase project details in static/supabase-config.js to enable live updates.');
+    return;
+  }
+
+  try {
+    setText(routineDataStatus, 'Loading routine updates from Supabase...');
+    window.PORTFOLIO_ROUTINE_POSTS = await supabaseClient.fetchRoutinePosts();
+    renderRoutinePosts();
+    setText(routineDataStatus, 'Live routine updates loaded from Supabase.');
+  } catch (error) {
+    window.PORTFOLIO_ROUTINE_POSTS = fallbackPosts;
+    renderRoutinePosts();
+    setText(routineDataStatus, 'Supabase routine loading failed, so the page fell back to local data. ' + error.message);
+  }
+}
+
 if (postsContainer) {
-  renderRoutinePosts();
+  loadRoutinePosts();
 }

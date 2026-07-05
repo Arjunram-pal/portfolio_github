@@ -11,6 +11,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   <script src="static/site-data.js" defer></script>
+  <script src="static/supabase-config.js" defer></script>
+  <script src="static/supabase-client.js" defer></script>
   <script src="static/script.js" defer></script>
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
@@ -57,6 +59,7 @@
           <li class="navbar-item"><a href="blog.html" class="navbar-link">Blog</a></li>
           <li class="navbar-item"><a href="daily-routine.html" class="navbar-link active">Daily Routine</a></li>
           <li class="navbar-item"><a href="contact.html" class="navbar-link">Contact</a></li>
+          <li class="navbar-item"><a href="admin.html" class="navbar-link">Admin</a></li>
         </ul>
       </nav>
 
@@ -69,8 +72,9 @@
           <div class="content-card page-note-card">
             <h3 class="h3">Current Workflow Snapshot</h3>
             <p class="page-note">
-              GitHub Pages cannot store live admin posts or replies, so this page now shows a static timeline. You can update it anytime in <code>static/site-data.js</code>.
+              This page can load your routine updates from Supabase. If Supabase is not configured yet, it will safely fall back to the sample timeline in <code>static/site-data.js</code>.
             </p>
+            <p class="form-status" id="routineDataStatus" aria-live="polite"></p>
           </div>
 
           <div id="postsContainer"></div>

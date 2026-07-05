@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact - Arjunram Pal</title>
+  <title>Admin - Arjunram Pal</title>
   <link rel="shortcut icon" href="static/images/logo.ico" type="image/x-icon">
   <link rel="stylesheet" href="static/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,10 +14,11 @@
   <script src="static/supabase-config.js" defer></script>
   <script src="static/supabase-client.js" defer></script>
   <script src="static/script.js" defer></script>
+  <script src="static/admin.js" defer></script>
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </head>
-<body data-page="contact">
+<body data-page="admin">
   <main>
     <aside class="sidebar" data-sidebar>
       <div class="sidebar-info">
@@ -39,14 +40,7 @@
         <ul class="contacts-list">
           <li class="contact-item"><div class="icon-box"><ion-icon name="mail-outline"></ion-icon></div><div class="contact-info"><p class="contact-title">Email</p><a href="mailto:arjunp087461@gmail.com" class="contact-link">arjunp087461@gmail.com</a></div></li>
           <li class="contact-item"><div class="icon-box"><ion-icon name="phone-portrait-outline"></ion-icon></div><div class="contact-info"><p class="contact-title">Phone</p><a href="tel:+917021344403" class="contact-link">+91 7021344403</a></div></li>
-          <li class="contact-item"><div class="icon-box"><ion-icon name="calendar-outline"></ion-icon></div><div class="contact-info"><p class="contact-title">Birthday</p><time datetime="1999-12-09">Dec 09, 1999</time></div></li>
           <li class="contact-item"><div class="icon-box"><ion-icon name="location-outline"></ion-icon></div><div class="contact-info"><p class="contact-title">Location</p><address>Bhadohi, Uttar Pradesh, India</address></div></li>
-        </ul>
-        <div class="separator"></div>
-        <ul class="social-list">
-          <li class="social-item"><a href="https://www.linkedin.com/in/arjunram-pal-2858211b4/" class="social-link" target="_blank" rel="noreferrer"><ion-icon name="logo-linkedin"></ion-icon></a></li>
-          <li class="social-item"><a href="https://github.com/Arjunram-pal" class="social-link" target="_blank" rel="noreferrer"><ion-icon name="logo-github"></ion-icon></a></li>
-          <li class="social-item"><a href="https://www.instagram.com/arjunram_paul/" class="social-link" target="_blank" rel="noreferrer"><ion-icon name="logo-instagram"></ion-icon></a></li>
         </ul>
       </div>
     </aside>
@@ -58,45 +52,74 @@
           <li class="navbar-item"><a href="resume.html" class="navbar-link">Resume</a></li>
           <li class="navbar-item"><a href="blog.html" class="navbar-link">Blog</a></li>
           <li class="navbar-item"><a href="daily-routine.html" class="navbar-link">Daily Routine</a></li>
-          <li class="navbar-item"><a href="contact.html" class="navbar-link active">Contact</a></li>
-          <li class="navbar-item"><a href="admin.html" class="navbar-link">Admin</a></li>
+          <li class="navbar-item"><a href="contact.html" class="navbar-link">Contact</a></li>
+          <li class="navbar-item"><a href="admin.html" class="navbar-link active">Admin</a></li>
         </ul>
       </nav>
 
       <article class="contact active">
         <header>
-          <h2 class="h2 article-title">Contact</h2>
+          <h2 class="h2 article-title">Admin</h2>
         </header>
 
-        <section class="mapbox" data-mapbox>
-          <figure>
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3604.887771754607!2d82.63324457607926!3d25.375077524471635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x398fdd5982ca35e9%3A0x25b12051512806d2!2sArjunram%20Pal!5e0!3m2!1sen!2sin!4v1741275124905!5m2!1sen!2sin"
-              width="400" height="300" loading="lazy"></iframe>
-          </figure>
+        <section class="content-card page-note-card">
+          <p class="page-note">
+            Sign in with your Supabase Auth account to publish blog posts and daily routine updates without editing code or redeploying the site.
+          </p>
+          <p class="form-status" id="adminConfigNotice" hidden>
+            Supabase is not configured yet. Add your project URL and anon key in <code>static/supabase-config.js</code> first.
+          </p>
         </section>
 
         <section class="contact-form">
-          <h3 class="h3 form-title">Contact Form</h3>
-          <p class="page-note form-note">
-            This static GitHub version opens your email app instead of sending through a backend server.
-          </p>
-
-          <form class="form" data-form data-contact-email="arjunp087461@gmail.com">
+          <h3 class="h3 form-title">Admin Login</h3>
+          <form class="form" id="adminLoginForm">
             <div class="input-wrapper">
-              <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
-              <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
+              <input type="email" name="email" class="form-input" placeholder="Supabase email" required>
+              <input type="password" name="password" class="form-input" placeholder="Password" required>
             </div>
-
-            <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
-
-            <button class="form-btn" type="submit" disabled data-form-btn>
-              <ion-icon name="paper-plane"></ion-icon>
-              <span>Send Message</span>
+            <button class="form-btn" type="submit">
+              <ion-icon name="log-in-outline"></ion-icon>
+              <span>Sign In</span>
             </button>
-
-            <p class="form-status" data-form-status aria-live="polite"></p>
+            <p class="form-status" id="adminLoginStatus" aria-live="polite"></p>
           </form>
+        </section>
+
+        <section class="contact-form" id="adminPanel" hidden>
+          <div class="admin-header-row">
+            <div>
+              <h3 class="h3 form-title">Publish Content</h3>
+              <p class="page-note">Signed in as <span id="adminUserEmail"></span></p>
+            </div>
+            <button class="blog-modal-close" id="adminSignOutBtn" type="button">Sign Out</button>
+          </div>
+
+          <div class="admin-grid">
+            <form class="form admin-form-card" id="adminBlogForm">
+              <h4 class="h4 admin-form-title">New Blog Post</h4>
+              <div class="input-wrapper">
+                <input type="text" name="title" class="form-input" placeholder="Blog title" required>
+                <input type="text" name="category" class="form-input" placeholder="Category" required>
+              </div>
+              <textarea name="content" class="form-input" placeholder="Write your blog content here" required></textarea>
+              <button class="form-btn" type="submit">
+                <ion-icon name="create-outline"></ion-icon>
+                <span>Publish Blog</span>
+              </button>
+              <p class="form-status" id="adminBlogStatus" aria-live="polite"></p>
+            </form>
+
+            <form class="form admin-form-card" id="adminRoutineForm">
+              <h4 class="h4 admin-form-title">New Routine Update</h4>
+              <textarea name="message" class="form-input admin-routine-box" placeholder="Share your daily routine update" required></textarea>
+              <button class="form-btn" type="submit">
+                <ion-icon name="calendar-outline"></ion-icon>
+                <span>Publish Routine</span>
+              </button>
+              <p class="form-status" id="adminRoutineStatus" aria-live="polite"></p>
+            </form>
+          </div>
         </section>
       </article>
     </div>
